@@ -1,9 +1,25 @@
 {
-    "posts": [
-      { "id": 1, "title": "json-server", "author": "typicode" }
-    ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "profile": { "name": "typicode" }
-  }
+  "investimentos_fii": [
+    {
+      "id": 1,
+      "code": "BBPO11",
+      "name": "BB PROGRESSIVO II FDO INV IMOB - FII",
+      "value": 139.45,
+      "transactions": [
+        {
+          "isBuying": true,
+          "value_paid": 138.7,
+          "quantity": 10
+        }
+      ]
+    }
+  ],
+  "investimentos_td": [
+    {
+      "id": 1,
+      "name": "Tesouro Direto Selic 2025",
+      "value_applied": 139.45,
+      "value_now": 150
+    }
+  ]
+}
