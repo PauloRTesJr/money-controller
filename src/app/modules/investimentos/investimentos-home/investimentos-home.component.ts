@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { InvestimentosService } from 'src/app/shared/services/investimentos/investimentos.service';
+import { InvestimentoFII } from 'src/app/shared/models/investimentos-fii.model';
 
 @Component({
   selector: 'app-investimentos-home',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./investimentos-home.component.scss']
 })
 export class InvestimentosHomeComponent implements OnInit {
-
-  constructor() { }
+  private investimentosFII: InvestimentoFII[];
+  constructor(private investimentosService: InvestimentosService) {}
 
   ngOnInit() {
+    this.investimentosService.getInvestimentosFII().subscribe(data => {
+      this.investimentosFII = data;
+      console.log(this.investimentosFII);
+    });
   }
-
 }
