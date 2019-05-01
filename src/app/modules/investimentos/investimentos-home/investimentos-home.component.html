@@ -1,7 +1,9 @@
 <div class="investimentos-home-container">
-  <h1 class="uk-heading-divider">Investimentos FII</h1>
+  <h3 class="uk-heading-divider">Investimentos FII</h3>
   <div>
-    <button class="uk-button uk-button-primary">Adicionar FII</button>
+    <a routerLink="add" class="uk-button uk-button-primary">
+      Adicionar FII
+    </a>
   </div>
   <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
     <thead>
@@ -20,8 +22,10 @@
         <td>{{ getMaxValuePaid(investimentoFII) | currency: 'R$' }}</td>
         <td>{{ getQuantity(investimentoFII) }}</td>
         <td>
-          <button class="uk-button uk-button-default" type="button">Ver</button>
-          <a class="button-delete" uk-icon="icon: close"></a>
+          <button class="uk-button uk-button-secondary">Ver</button>
+          <button class="uk-button uk-button-danger button-delete">
+            <span uk-icon="icon: close"></span>
+          </button>
         </td>
       </tr>
     </tbody>

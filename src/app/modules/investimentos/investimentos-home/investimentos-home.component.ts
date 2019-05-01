@@ -14,7 +14,6 @@ export class InvestimentosHomeComponent implements OnInit {
   ngOnInit() {
     this.investimentosService.getInvestimentosFII().subscribe(data => {
       this.investimentosFII = data;
-      console.log(this.investimentosFII);
     });
   }
 
