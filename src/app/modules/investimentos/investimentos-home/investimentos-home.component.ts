@@ -17,4 +17,15 @@ export class InvestimentosHomeComponent implements OnInit {
       console.log(this.investimentosFII);
     });
   }
+
+  getMaxValuePaid(investimento: InvestimentoFII) {
+    return investimento.value;
+  }
+
+  getQuantity(investimento: InvestimentoFII) {
+    return investimento.transactions.reduce(
+      (total, value) => total + value.quantity,
+      0
+    );
+  }
 }
