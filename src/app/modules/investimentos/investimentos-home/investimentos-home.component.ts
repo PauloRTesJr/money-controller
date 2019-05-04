@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { InvestimentosService } from 'src/app/shared/services/investimentos/investimentos.service';
-import { InvestimentoFII } from 'src/app/shared/models/investimentos-fii.model';
+import { Investimento } from 'src/app/shared/models/investimento.model';
+import { InvestimentosService } from '../services/investimentos/investimentos.service';
+import { InvestimentoType } from 'src/app/shared/models/investimento-type.model';
 
 @Component({
   selector: 'app-investimentos-home',
@@ -8,20 +9,22 @@ import { InvestimentoFII } from 'src/app/shared/models/investimentos-fii.model';
   styleUrls: ['./investimentos-home.component.scss']
 })
 export class InvestimentosHomeComponent implements OnInit {
-  private investimentosFII: InvestimentoFII[];
+  private investimentosFII: Investimento[];
   constructor(private investimentosService: InvestimentosService) {}
 
   ngOnInit() {
-    this.investimentosService.getInvestimentosFII().subscribe(data => {
-      this.investimentosFII = data;
+    this.investimentosService.getInvestimentos().subscribe(data => {
+      this.investimentosFII = data.filter(
+        inv => inv.type === InvestimentoType.FII
+      );
     });
   }
 
-  getMaxValuePaid(investimento: InvestimentoFII) {
+  getMaxValuePaid(investimento: Investimento) {
     return investimento.value;
   }
 
-  getQuantity(investimento: InvestimentoFII) {
+  getQuantity(investimento: Investimento) {
     return investimento.transactions.reduce(
       (total, value) => total + value.quantity,
       0
