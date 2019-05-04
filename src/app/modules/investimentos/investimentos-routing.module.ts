@@ -4,18 +4,18 @@ import { InvestimentosHomeComponent } from './investimentos-home/investimentos-h
 import { InvestimentosAddComponent } from './investimentos-add/investimentos-add.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: InvestimentosHomeComponent
-  },
-  {
-    path: 'add',
-    component: InvestimentosAddComponent
-  }
+    {
+        path: '',
+        component: InvestimentosHomeComponent
+    },
+    {
+        path: 'add',
+        component: InvestimentosAddComponent
+    }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
-export class InvestimentosRoutingModule {}
+export class InvestimentosRoutingModule { }

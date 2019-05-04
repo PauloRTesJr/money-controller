@@ -1,28 +1,52 @@
 <div class="investimentos-add-container">
-  <div>
-    <a routerLink="/" class="uk-button uk-button-secondary">Voltar</a>
-  </div>
-  <div class="form-container uk-flex uk-flex-center">
-    <form class="uk-grid-small" uk-grid>
-      <div class="uk-width-1-1">
-        <h3>Adicionar Investimento</h3>
-      </div>
-      <div class="uk-width-1-4@s">
-        <div class="uk-margin">
-          <label class="uk-form-label" for="form-stacked-text">Código</label>
-          <div class="uk-form-controls">
-            <input class="uk-input" id="form-stacked-text" type="text" />
-          </div>
-        </div>
-      </div>
-      <div class="uk-width-3-4@s">
-        <div class="uk-margin">
-          <label class="uk-form-label" for="form-stacked-text">Nome</label>
-          <div class="uk-form-controls">
-            <input class="uk-input" id="form-stacked-text" type="text" />
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
+    <div>
+        <a routerLink="/" class="uk-button uk-button-secondary">Voltar</a>
+    </div>
+    <div class="form-container uk-flex uk-flex-center">
+        <form #form="ngForm" class="uk-grid-small" uk-grid>
+            <div class="uk-width-1-1">
+                <h3>Adicionar Investimento</h3>
+            </div>
+            <div class="uk-width-1-1">
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="form-stacked-text">Nome</label>
+                    <div class="uk-form-controls">
+                        <input name="name" #name="ngModel" [ngModel]="investimentoForm?.name" required class="uk-input"
+                            id="form-stacked-text" type="text" />
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-1-3@s">
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="form-stacked-text">Código</label>
+                    <div class="uk-form-controls">
+                        <input name="code" #code="ngModel" [ngModel]="investimentoForm?.code" class="uk-input"
+                            id="form-stacked-text" type="text" />
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-1-3@s">
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="form-stacked-text">Valor Atual</label>
+                    <div class="uk-form-controls">
+                        <input name="value" #value="ngModel" [ngModel]="investimentoForm?.value" class="uk-input"
+                            id="form-stacked-text" type="number" />
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-1-3@s">
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="form-stacked-text">Tipo</label>
+                    <div class="uk-form-controls">
+                        <select class="uk-select">
+                            <option value="" selected disabled hidden>Choose here</option>
+                            <option value="0">Ação</option>
+                            <option value="1">FII</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+        {{ investimentoForm | json }}
+    </div>
 </div>

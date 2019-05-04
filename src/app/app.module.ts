@@ -11,14 +11,14 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { environment } from 'src/environments/environment';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
-  ],
-  providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
-  bootstrap: [AppComponent]
+    declarations: [AppComponent, NavbarComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule
+    ],
+    providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
+    bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

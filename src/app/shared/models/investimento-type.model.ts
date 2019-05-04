@@ -1,4 +1,4 @@
 export enum InvestimentoType {
-  Acoes = 0,
-  FII = 1
+    Acoes = 0,
+    FII = 1
 }

@@ -4,17 +4,17 @@ import { Observable } from 'rxjs';
 import { Investimento } from 'src/app/shared/models/investimento.model';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class InvestimentosService {
-  private investimentos: Observable<Investimento[]>;
-  constructor(private db: AngularFirestore) {
-    this.investimentos = db
-      .collection('/investimentos')
-      .valueChanges() as Observable<Investimento[]>;
-  }
+    private investimentos: Observable<Investimento[]>;
+    constructor (private db: AngularFirestore) {
+        this.investimentos = db
+            .collection('/investimentos')
+            .valueChanges() as Observable<Investimento[]>;
+    }
 
-  getInvestimentos(): Observable<Investimento[]> {
-    return this.investimentos;
-  }
+    getInvestimentos(): Observable<Investimento[]> {
+        return this.investimentos;
+    }
 }
