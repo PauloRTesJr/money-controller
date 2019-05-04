@@ -13,4 +13,5 @@ export interface Transactions {
     isBuying: boolean;
     value_paid: number;
     quantity: number;
+    date: Date;
 }

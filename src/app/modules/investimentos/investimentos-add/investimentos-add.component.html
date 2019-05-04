@@ -11,8 +11,7 @@
                 <div class="uk-margin">
                     <label class="uk-form-label" for="form-stacked-text">Nome</label>
                     <div class="uk-form-controls">
-                        <input name="name" #name="ngModel" [ngModel]="investimentoForm?.name" required class="uk-input"
-                            id="form-stacked-text" type="text" />
+                        <input name="name" [(ngModel)]="investimentoForm.name" required class="uk-input" type="text" />
                     </div>
                 </div>
             </div>
@@ -20,8 +19,7 @@
                 <div class="uk-margin">
                     <label class="uk-form-label" for="form-stacked-text">Código</label>
                     <div class="uk-form-controls">
-                        <input name="code" #code="ngModel" [ngModel]="investimentoForm?.code" class="uk-input"
-                            id="form-stacked-text" type="text" />
+                        <input name="code" [(ngModel)]="investimentoForm.code" class="uk-input" type="text" />
                     </div>
                 </div>
             </div>
@@ -29,8 +27,7 @@
                 <div class="uk-margin">
                     <label class="uk-form-label" for="form-stacked-text">Valor Atual</label>
                     <div class="uk-form-controls">
-                        <input name="value" #value="ngModel" [ngModel]="investimentoForm?.value" class="uk-input"
-                            id="form-stacked-text" type="number" />
+                        <input name="value" [(ngModel)]="investimentoForm.value" class="uk-input" type="number" />
                     </div>
                 </div>
             </div>
@@ -38,12 +35,47 @@
                 <div class="uk-margin">
                     <label class="uk-form-label" for="form-stacked-text">Tipo</label>
                     <div class="uk-form-controls">
-                        <select class="uk-select">
-                            <option value="" selected disabled hidden>Choose here</option>
+                        <select class="uk-select" name="type" [(ngModel)]="investimentoForm.type">
+                            <option value="" selected disabled hidden>Escolher...</option>
                             <option value="0">Ação</option>
                             <option value="1">FII</option>
                         </select>
                     </div>
+                </div>
+            </div>
+            <div class="uk-width-1-1">
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="form-stacked-text">Transações</label>
+
+                    <div class="transaction-container"
+                        *ngFor="let transaction of investimentoForm?.transactions; let i = index">
+                        <div class="transaction-is-buying">
+                            <label class="uk-form-label" for="form-stacked-text">Comprando</label>
+                            <input name="transaction-is-buying" [(ngModel)]="transaction.isBuying" class="uk-checkbox"
+                                type="checkbox" />
+                        </div>
+                        <div class="uk-margin transaction-input">
+                            <input placeholder="Valor" name="value_paid" #code="ngModel"
+                                [(ngModel)]="transaction.value_paid" class="uk-input" type="text" required />
+                        </div>
+                        <div class="uk-margin transaction-input">
+                            <input placeholder="Quantidade" name="quantity" [(ngModel)]="transaction.quantity"
+                                class="uk-input" type="text" required />
+                        </div>
+                        <div class="uk-margin transaction-input">
+                            <a (click)="removeTransaction(i)" uk-icon="icon: minus-circle"></a>
+                        </div>
+                    </div>
+                    <div class="uk-width-1-1">
+                        <a (click)="addEmptyTransaction()" uk-icon="icon: plus-circle">Adicionar </a>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-1-1">
+                <div class="uk-margin">
+                    <button class="uk-button uk-button-primary" type="submit" [disabled]="form.invalid">
+                        Salvar
+                    </button>
                 </div>
             </div>
         </form>

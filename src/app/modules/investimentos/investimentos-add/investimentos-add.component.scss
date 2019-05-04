@@ -3,5 +3,22 @@
 
   .form-container {
     margin: 5vh 0;
+
+    .transaction-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        .transaction-is-buying {
+            label {
+                margin-right: 0.8vw;
+            }
+        }
+
+        .transaction-input {
+            margin-left: 3vw;
+        }
+    }
   }
 }

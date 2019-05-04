@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Investimento } from 'src/app/shared/models/investimento.model';
+import { Investimento, Transactions } from 'src/app/shared/models/investimento.model';
 
 @Component({
     selector: 'app-investimentos-add',
@@ -11,5 +11,18 @@ export class InvestimentosAddComponent implements OnInit {
     investimentoForm: Investimento;
     constructor () { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.investimentoForm = <Investimento>{};
+    }
+
+    addEmptyTransaction() {
+        if (!this.investimentoForm.transactions) {
+            this.investimentoForm.transactions = [];
+        }
+        this.investimentoForm.transactions.push(<Transactions>{});
+    }
+
+    removeTransaction(index: number) {
+        this.investimentoForm.transactions.splice(index, 1);
+    }
 }
