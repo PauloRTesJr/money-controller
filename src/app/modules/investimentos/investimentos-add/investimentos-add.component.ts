@@ -9,10 +9,14 @@ import { Investimento, Transactions } from 'src/app/shared/models/investimento.m
 export class InvestimentosAddComponent implements OnInit {
     @Input()
     investimentoForm: Investimento;
+
+    transactionAdd: Transactions;
+
     constructor () { }
 
     ngOnInit() {
         this.investimentoForm = <Investimento>{};
+        this.transactionAdd = <Transactions>{};
     }
 
     addEmptyTransaction() {

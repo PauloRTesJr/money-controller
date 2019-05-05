@@ -47,27 +47,30 @@
                 <div class="uk-margin">
                     <label class="uk-form-label" for="form-stacked-text">Transações</label>
 
-                    <div class="transaction-container"
-                        *ngFor="let transaction of investimentoForm?.transactions; let i = index">
-                        <div class="transaction-is-buying">
-                            <label class="uk-form-label" for="form-stacked-text">Comprando</label>
-                            <input name="transaction-is-buying" [(ngModel)]="transaction.isBuying" class="uk-checkbox"
-                                type="checkbox" />
+                    <div class="uk-width-1-1">
+                        <a uk-toggle="target: #transactions-modal" uk-icon="icon: plus-circle">Adicionar </a>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-1-1">
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="form-stacked-text">Rendimentos</label>
+
+                    <div class="transaction-container" *ngFor="let income of investimentoForm?.incomes; let i = index">
+                        <div class="uk-margin transaction-input">
+                            <input placeholder="Valor" name="value_paid_{{i}}" #code="ngModel"
+                                [(ngModel)]="income.value_paid" class="uk-input" type="number" required />
                         </div>
                         <div class="uk-margin transaction-input">
-                            <input placeholder="Valor" name="value_paid" #code="ngModel"
-                                [(ngModel)]="transaction.value_paid" class="uk-input" type="text" required />
+                            <input placeholder="Data" name="quantity_{{i}}" [(ngModel)]="income.quantity"
+                                class="uk-input" type="text" data-uk-datepicker="{format:'DD.MM.YYYY'}" required />
                         </div>
                         <div class="uk-margin transaction-input">
-                            <input placeholder="Quantidade" name="quantity" [(ngModel)]="transaction.quantity"
-                                class="uk-input" type="text" required />
-                        </div>
-                        <div class="uk-margin transaction-input">
-                            <a (click)="removeTransaction(i)" uk-icon="icon: minus-circle"></a>
+                            <a (click)="removeIncome(i)" uk-icon="icon: minus-circle"></a>
                         </div>
                     </div>
                     <div class="uk-width-1-1">
-                        <a (click)="addEmptyTransaction()" uk-icon="icon: plus-circle">Adicionar </a>
+                        <a (click)="addEmptyIncome()" uk-icon="icon: plus-circle">Adicionar </a>
                     </div>
                 </div>
             </div>
@@ -76,6 +79,34 @@
                     <button class="uk-button uk-button-primary" type="submit" [disabled]="form.invalid">
                         Salvar
                     </button>
+                </div>
+            </div>
+
+            <div id="transactions-modal" uk-modal>
+                <div class="uk-modal-dialog uk-margin-auto-vertical">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                    <div class="uk-modal-header">
+                        <h2 class="uk-modal-title">Adicionar Transação</h2>
+                    </div>
+                    <div class="uk-modal-body transaction-container">
+                        <div class="transaction-is-buying">
+                            <label class="uk-form-label" for="form-stacked-text">Comprando</label>
+                            <input name="transaction-is-buying_{{i}}" [(ngModel)]="transactionAdd.isBuying"
+                                class="uk-checkbox" type="checkbox" />
+                        </div>
+                        <div class="transaction-input">
+                            <input placeholder="Valor" name="value_paid_{{i}}" #code="ngModel"
+                                [(ngModel)]="transactionAdd.value_paid" class="uk-input" type="number" required />
+                        </div>
+                        <div class="transaction-input">
+                            <input placeholder="Quantidade" name="quantity_{{i}}" [(ngModel)]="transactionAdd.quantity"
+                                class="uk-input" type="number" required />
+                        </div>
+                    </div>
+                    <div class="uk-modal-footer uk-text-right">
+                        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                        <button class="uk-button uk-button-primary" type="button">Save</button>
+                    </div>
                 </div>
             </div>
         </form>
