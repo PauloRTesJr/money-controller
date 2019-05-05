@@ -9,7 +9,7 @@ import { InvestimentoType } from 'src/app/shared/models/investimento-type.model'
     styleUrls: ['./investimentos-home.component.scss']
 })
 export class InvestimentosHomeComponent implements OnInit {
-    private investimentosFII: Investimento[];
+    investimentosFII: Investimento[];
     constructor (private investimentosService: InvestimentosService) { }
 
     ngOnInit() {
