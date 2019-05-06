@@ -13,12 +13,19 @@
     justify-content: center;
 
     .transaction-is-buying {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
         label {
-            margin-right: 0.8vw;
+            margin-bottom: 1vh;
         }
     }
 
     .transaction-input {
-        margin-left: 3vw;
+        flex: 3;
+        margin-left: 1rem;
     }
 }

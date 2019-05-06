@@ -19,11 +19,8 @@ export class InvestimentosAddComponent implements OnInit {
         this.transactionAdd = <Transactions>{};
     }
 
-    addEmptyTransaction() {
-        if (!this.investimentoForm.transactions) {
-            this.investimentoForm.transactions = [];
-        }
-        this.investimentoForm.transactions.push(<Transactions>{});
+    addTransaction() {
+        this.investimentoForm.transactions.push(this.transactionAdd);
     }
 
     removeTransaction(index: number) {
