@@ -6,18 +6,18 @@ export interface Investimento {
     name: string;
     value: number;
     type: InvestimentoType;
-    transactions: Transactions[];
-    incomes: Incomes[]
+    transactions: Transaction[];
+    incomes: Income[]
 }
 
-export interface Transactions {
+export interface Transaction {
     isBuying: boolean;
     value_paid: number;
     quantity: number;
     date: Date;
 }
 
-export interface Incomes {
+export interface Income {
     value_paid: number;
     date: Date;
 }

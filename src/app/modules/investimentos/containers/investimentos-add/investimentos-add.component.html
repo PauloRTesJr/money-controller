@@ -68,7 +68,28 @@
                             </tr>
                         </tbody>
                     </table>
-                    {{investimentoForm.transactions | json}}
+                </div>
+            </div>
+            <div class="uk-width-1-1">
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="form-stacked-text">Rendimentos</label>
+                    <div class="uk-width-1-1">
+                        <a uk-toggle="target: #incomes-modal" uk-icon="icon: plus-circle">Adicionar </a>
+                    </div>
+                    <table *ngIf="investimentoForm.incomes.length > 0" class="uk-table uk-table-small uk-table-divider">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Valor pago</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let incomeRow of investimentoForm.incomes">
+                                <td>{{incomeRow.date | date:'dd/MM/yyyy'}}</td>
+                                <td>{{incomeRow.value_paid | currency: 'R$'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div class="uk-width-1-1">
@@ -103,7 +124,7 @@
                         </div>
                         <div class="transaction-input datepicker">
                             <label class="uk-form-label" for="form-stacked-text">Data</label>
-                            <my-date-picker (dateChanged)="onDateChanged($event)" name="mydate"
+                            <my-date-picker (dateChanged)="onDateChanged($event, true)" name="mydate"
                                 [options]="{dateFormat: 'dd.mm.yyyy'}">
                             </my-date-picker>
                         </div>
@@ -111,6 +132,33 @@
                     <div class="uk-modal-footer uk-text-right">
                         <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
                         <button class="uk-button uk-button-primary" (click)="addTransaction()"
+                            type="button">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="incomes-modal" uk-modal>
+                <div class="uk-modal-dialog uk-margin-auto-vertical">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                    <div class="uk-modal-header">
+                        <h2 class="uk-modal-title">Adicionar Rendimento</h2>
+                    </div>
+                    <div class="uk-modal-body transaction-container">
+                        <div class="transaction-input">
+                            <label class="uk-form-label" for="form-stacked-text">Valor</label>
+                            <input name="value_paid" #code="ngModel" [(ngModel)]="incomeAdd.value_paid" class="uk-input"
+                                type="number" />
+                        </div>
+                        <div class="transaction-input datepicker">
+                            <label class="uk-form-label" for="form-stacked-text">Data</label>
+                            <my-date-picker (dateChanged)="onDateChanged($event, false)" name="mydate"
+                                [options]="{dateFormat: 'dd.mm.yyyy'}">
+                            </my-date-picker>
+                        </div>
+                    </div>
+                    <div class="uk-modal-footer uk-text-right">
+                        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
+                        <button class="uk-button uk-button-primary" (click)="addIncome()"
                             type="button">Adicionar</button>
                     </div>
                 </div>
