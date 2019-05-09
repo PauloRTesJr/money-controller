@@ -23,13 +23,14 @@ export class InvestimentosAddComponent implements OnInit {
 
     onDateChanged(event: IMyDateModel) {
         console.log('onDateChanged(): ', event.date, ' - jsdate: ', new Date(event.jsdate).toLocaleDateString(), ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
-        this.transactionAdd.date = new Date(event.epoc);
-        console.log("Setting new date", this.transactionAdd.date)
+        this.transactionAdd.date = event.jsdate
+        console.log("Setting new date", this.transactionAdd.date);
     }
 
     addTransaction() {
         if (this.transactionAdd.date && this.transactionAdd.quantity && this.transactionAdd.quantity) {
             this.investimentoForm.transactions.push(this.transactionAdd);
+            this.transactionAdd = Object.create(<Transactions>{});
             UIkit.modal("#transactions-modal").hide();
         } else {
             UIkit.notification('Tempo campo faltando, mano! Preenche tudo aí, carai!', 'danger');

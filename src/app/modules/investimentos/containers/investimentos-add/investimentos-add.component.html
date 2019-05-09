@@ -49,30 +49,28 @@
                     <div class="uk-width-1-1">
                         <a uk-toggle="target: #transactions-modal" uk-icon="icon: plus-circle">Adicionar </a>
                     </div>
+                    <table *ngIf="investimentoForm.transactions.length > 0"
+                        class="uk-table uk-table-small uk-table-divider">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Comprando</th>
+                                <th>Valor pago</th>
+                                <th>Quantidade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let transactionRow of investimentoForm.transactions">
+                                <td>{{transactionRow.date | date:'dd/MM/yyyy'}}</td>
+                                <td>{{transactionRow.isBuying ? '✓' : ''}}</td>
+                                <td>{{transactionRow.value_paid | currency: 'R$'}}</td>
+                                <td>{{transactionRow.quantity}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    {{investimentoForm.transactions | json}}
                 </div>
             </div>
-            <!-- <div class="uk-width-1-1">
-                <div class="uk-margin">
-                    <label class="uk-form-label" for="form-stacked-text">Rendimentos</label>
-
-                    <div class="transaction-container" *ngFor="let income of investimentoForm?.incomes; let i = index">
-                        <div class="uk-margin transaction-input">
-                            <input placeholder="Valor" name="value_paid_{{i}}" #code="ngModel"
-                                [(ngModel)]="income.value_paid" class="uk-input" type="number" required />
-                        </div>
-                        <div class="uk-margin transaction-input">
-                            <input placeholder="Data" name="quantity_{{i}}" [(ngModel)]="income.quantity"
-                                class="uk-input" type="text" data-uk-datepicker="{format:'DD.MM.YYYY'}" required />
-                        </div>
-                        <div class="uk-margin transaction-input">
-                            <a (click)="removeIncome(i)" uk-icon="icon: minus-circle"></a>
-                        </div>
-                    </div>
-                    <div class="uk-width-1-1">
-                        <a (click)="addEmptyIncome()" uk-icon="icon: plus-circle">Adicionar </a>
-                    </div>
-                </div>
-            </div> -->
             <div class="uk-width-1-1">
                 <div class="uk-margin">
                     <button class="uk-button uk-button-primary" type="submit" [disabled]="form.invalid">
@@ -94,14 +92,17 @@
                                 class="uk-checkbox" type="checkbox" />
                         </div>
                         <div class="transaction-input">
-                            <input placeholder="Valor" name="value_paid" #code="ngModel"
-                                [(ngModel)]="transactionAdd.value_paid" class="uk-input" type="number" />
-                        </div>
-                        <div class="transaction-input">
-                            <input placeholder="Quantidade" name="quantity" [(ngModel)]="transactionAdd.quantity"
+                            <label class="uk-form-label" for="form-stacked-text">Valor</label>
+                            <input name="value_paid" #code="ngModel" [(ngModel)]="transactionAdd.value_paid"
                                 class="uk-input" type="number" />
                         </div>
+                        <div class="transaction-input">
+                            <label class="uk-form-label" for="form-stacked-text">Quantidade</label>
+                            <input name="quantity" [(ngModel)]="transactionAdd.quantity" class="uk-input"
+                                type="number" />
+                        </div>
                         <div class="transaction-input datepicker">
+                            <label class="uk-form-label" for="form-stacked-text">Data</label>
                             <my-date-picker (dateChanged)="onDateChanged($event)" name="mydate"
                                 [options]="{dateFormat: 'dd.mm.yyyy'}">
                             </my-date-picker>

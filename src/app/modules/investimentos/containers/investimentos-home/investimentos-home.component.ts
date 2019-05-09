@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Investimento } from 'src/app/shared/models/investimento.model';
-import { InvestimentosService } from '../services/investimentos/investimentos.service';
+import { InvestimentosService } from '../../services/investimentos/investimentos.service';
 import { InvestimentoType } from 'src/app/shared/models/investimento-type.model';
 
 @Component({

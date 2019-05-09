@@ -9,7 +9,7 @@
 .transaction-container {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: baseline;
     justify-content: center;
 
     .transaction-is-buying {
@@ -20,12 +20,20 @@
         align-items: center;
 
         label {
-            margin-bottom: 1vh;
+            margin-bottom: 2vh;
         }
     }
 
     .transaction-input {
         flex: 3;
         margin-left: 1rem;
+    }
+
+    @media (max-width: 450px) {
+        flex-direction: column;
+
+        .transaction-input {
+            width: 100%;
+        }
     }
 }
