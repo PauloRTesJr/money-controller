@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Investimento, Transaction, Income } from 'src/app/shared/models/investimento.model';
 import { IMyDateModel } from 'mydatepicker';
 import UIkit from 'uikit';
+import { InvestimentosService } from '../../services/investimentos/investimentos.service';
 
 @Component({
     selector: 'app-investimentos-add',
@@ -16,7 +18,7 @@ export class InvestimentosAddComponent implements OnInit {
 
     incomeAdd: Income;
 
-    constructor () { }
+    constructor(private investimentosService: InvestimentosService, private router: Router) { }
 
     ngOnInit() {
         this.investimentoForm = <Investimento>{ transactions: [], incomes: [] };
@@ -32,6 +34,10 @@ export class InvestimentosAddComponent implements OnInit {
             this.incomeAdd.date = event.jsdate
             console.log("Setting new date to income", this.incomeAdd.date);
         }
+    }
+
+    onChangeType(selected: string) {
+        this.investimentoForm.type = parseInt(selected);
     }
 
     addTransaction() {
@@ -56,5 +62,14 @@ export class InvestimentosAddComponent implements OnInit {
         } else {
             UIkit.notification('Tempo campo faltando, mano! Preenche tudo aí, carai!', 'danger');
         }
+    }
+
+    onSubmit() {
+        this.investimentosService.addInvestimento(this.investimentoForm)
+            .then(() => this.router.navigate(['/investimentos']))
+            .catch((error) => {
+                console.log(error);
+                UIkit.notification('Alguma coisa de errado não está certo', 'danger')
+            });
     }
 }
