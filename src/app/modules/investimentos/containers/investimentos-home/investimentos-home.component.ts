@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import UIkit from 'uikit';
 import { Investimento } from 'src/app/shared/models/investimento.model';
 import { InvestimentosService } from '../../services/investimentos/investimentos.service';
 import { InvestimentoType } from 'src/app/shared/models/investimento-type.model';
@@ -10,7 +11,7 @@ import { InvestimentoType } from 'src/app/shared/models/investimento-type.model'
 })
 export class InvestimentosHomeComponent implements OnInit {
     investimentosFII: Investimento[];
-    constructor (private investimentosService: InvestimentosService) { }
+    constructor(private investimentosService: InvestimentosService) { }
 
     ngOnInit() {
         this.investimentosService.getInvestimentos().subscribe(data => {
@@ -29,5 +30,11 @@ export class InvestimentosHomeComponent implements OnInit {
             (total, value) => total + value.quantity,
             0
         );
+    }
+
+    removeInvestimento(investimento: Investimento) {
+        this.investimentosService.removeInvestimento(investimento)
+            .then(() => UIkit.notification('SUUU-CE-SSOOOO', 'primary'))
+            .catch(() => UIkit.notification('ERROOOOU', 'danger'))
     }
 }

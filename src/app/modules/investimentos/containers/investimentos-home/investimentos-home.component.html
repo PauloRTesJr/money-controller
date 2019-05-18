@@ -23,7 +23,8 @@
                 <td>{{ getQuantity(investimentoFII) }}</td>
                 <td>
                     <button class="uk-button uk-button-secondary">Ver</button>
-                    <button class="uk-button uk-button-danger button-delete">
+                    <button (click)="removeInvestimento(investimentoFII)"
+                        class="uk-button uk-button-danger button-delete">
                         <span uk-icon="icon: close"></span>
                     </button>
                 </td>

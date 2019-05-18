@@ -25,4 +25,11 @@ export class InvestimentosService {
         const investimentoToAdd: Investimento = { id, ...investimento };
         return this.investimentosCollection.doc(id).set(investimentoToAdd);
     }
+
+    removeInvestimento(investimento: Investimento) {
+        if (!investimento.id) {
+            Promise.reject('Id not found');
+        }
+        return this.investimentosCollection.doc(investimento.id).delete();
+    }
 }
