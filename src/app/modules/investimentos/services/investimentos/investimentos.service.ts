@@ -27,9 +27,6 @@ export class InvestimentosService {
     }
 
     removeInvestimento(investimento: Investimento) {
-        if (!investimento.id) {
-            Promise.reject('Id not found');
-        }
         return this.investimentosCollection.doc(investimento.id).delete();
     }
 }
