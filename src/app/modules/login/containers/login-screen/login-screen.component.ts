@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
+import { LoginService } from '../../services/login.service';
 
 @Component({
     selector: 'app-login-screen',
@@ -9,9 +8,16 @@ import * as firebase from 'firebase/app';
 })
 export class LoginScreenComponent implements OnInit {
 
-    constructor (private afAuth: AngularFireAuth) { }
+    email: string;
+    password: string;
+
+    constructor (private loginService: LoginService) { }
 
     ngOnInit() {
     }
 
+    onSubmit() {
+        console.log(`Trying log in with email: ${this.email}`);
+        this.loginService.signIn(this.email, this.password);
+    }
 }

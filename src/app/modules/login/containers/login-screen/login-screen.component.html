@@ -1,20 +1,32 @@
-<div class="uk-vertical-align uk-text-center uk-height-1-1">
-  <div class="uk-vertical-align-middle" style="width: 250px;">
-    <form class="uk-panel uk-panel-box uk-form">
-      <div class="uk-form-row">
-        <input class="uk-width-1-1 uk-form-large" type="text" placeholder="Username">
-      </div>
-      <div class="uk-form-row">
-        <input class="uk-width-1-1 uk-form-large" type="text" placeholder="Password">
-      </div>
-      <div class="uk-form-row">
-        <a class="uk-width-1-1 uk-button uk-button-primary uk-button-large" href="#">Login</a>
-      </div>
-      <div class="uk-form-row uk-text-small">
-        <label class="uk-float-left"><input type="checkbox"> Remember Me</label>
-        <a class="uk-float-right uk-link uk-link-muted" href="#">Forgot Password?</a>
-      </div>
-    </form>
-
-  </div>
+<div class="uk-section uk-flex uk-flex-middle uk-animation-fade">
+    <div class="uk-width-1-1">
+        <div class="uk-container">
+            <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
+                <div class="uk-width-1-1@m">
+                    <div
+                        class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+                        <h3 class="uk-card-title uk-text-center">Entre ai! :D</h3>
+                        <form (ngSubmit)="onSubmit()" #form="ngForm">
+                            <div class="uk-margin">
+                                <div class="uk-inline uk-width-1-1">
+                                    <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                                    <input [(ngModel)]="email" name="email" class="uk-input uk-form-large" type="email">
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                                <div class="uk-inline uk-width-1-1">
+                                    <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                                    <input [(ngModel)]="password" name="password" class="uk-input uk-form-large"
+                                        type="password">
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                                <button class="uk-button uk-button-primary uk-button-large uk-width-1-1">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
