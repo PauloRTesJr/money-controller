@@ -12,7 +12,7 @@ export class LoginService {
             (user) => {
                 if (user) {
                     localStorage.setItem('user', JSON.stringify(user));
-                    console.log(user);
+                    this.router.navigate(['/investimentos'])
                 }
                 else {
                     localStorage.setItem('user', null);
@@ -33,6 +33,6 @@ export class LoginService {
     }
     logout() {
         this._firebaseAuth.auth.signOut()
-            .then((res) => this.router.navigate(['/']));
+            .then((res) => this.router.navigate(['/login']));
     }
 }

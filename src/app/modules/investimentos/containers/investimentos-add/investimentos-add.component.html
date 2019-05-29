@@ -1,170 +1,175 @@
-<div class="investimentos-add-container">
-    <div>
-        <a routerLink="/" class="uk-button uk-button-secondary">Voltar</a>
-    </div>
-    <div class="form-container uk-flex uk-flex-center">
-        <form (ngSubmit)="onSubmit()" #form="ngForm" class="uk-grid-small" uk-grid>
-            <div class="uk-width-1-1">
-                <h3>Adicionar Investimento</h3>
-            </div>
-            <div class="uk-width-1-1">
-                <div class="uk-margin">
-                    <label class="uk-form-label" for="form-stacked-text">Nome</label>
-                    <div class="uk-form-controls">
-                        <input name="name" [(ngModel)]="investimentoForm.name" required class="uk-input" type="text" />
-                    </div>
+<div class="uk-container">
+    <div class="investimentos-add-container">
+        <div>
+            <a routerLink="/" class="uk-button uk-button-secondary">Voltar</a>
+        </div>
+        <div class="form-container uk-flex uk-flex-center">
+            <form (ngSubmit)="onSubmit()" #form="ngForm" class="uk-grid-small" uk-grid>
+                <div class="uk-width-1-1">
+                    <h3>Adicionar Investimento</h3>
                 </div>
-            </div>
-            <div class="uk-width-1-3@s">
-                <div class="uk-margin">
-                    <label class="uk-form-label" for="form-stacked-text">Código</label>
-                    <div class="uk-form-controls">
-                        <input name="code" [(ngModel)]="investimentoForm.code" required class="uk-input" type="text" />
-                    </div>
-                </div>
-            </div>
-            <div class="uk-width-1-3@s">
-                <div class="uk-margin">
-                    <label class="uk-form-label" for="form-stacked-text">Valor Atual</label>
-                    <div class="uk-form-controls">
-                        <input name="value" required [(ngModel)]="investimentoForm.value" class="uk-input"
-                            type="number" />
-                    </div>
-                </div>
-            </div>
-            <div class="uk-width-1-3@s">
-                <div class="uk-margin">
-                    <label class="uk-form-label" for="form-stacked-text">Tipo</label>
-                    <div class="uk-form-controls">
-                        <select class="uk-select" name="type" [(ngModel)]="investimentoForm.type"
-                            (ngModelChange)="onChangeType($event)">
-                            <option value="" selected disabled hidden>Escolher...</option>
-                            <option value="0">Ação</option>
-                            <option value="1">FII</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="uk-width-1-1">
-                <div class="uk-margin">
-                    <label class="uk-form-label" for="form-stacked-text">Transações</label>
-                    <div class="uk-width-1-1">
-                        <a uk-toggle="target: #transactions-modal" uk-icon="icon: plus-circle">Adicionar </a>
-                    </div>
-                    <table *ngIf="investimentoForm.transactions.length > 0"
-                        class="uk-table uk-table-small uk-table-divider">
-                        <thead>
-                            <tr>
-                                <th>Data</th>
-                                <th>Comprando</th>
-                                <th>Valor pago</th>
-                                <th>Quantidade</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let transactionRow of investimentoForm.transactions">
-                                <td>{{transactionRow.date | date:'dd/MM/yyyy'}}</td>
-                                <td>{{transactionRow.isBuying ? '✓' : ''}}</td>
-                                <td>{{transactionRow.value_paid | currency: 'R$'}}</td>
-                                <td>{{transactionRow.quantity}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="uk-width-1-1">
-                <div class="uk-margin">
-                    <label class="uk-form-label" for="form-stacked-text">Rendimentos</label>
-                    <div class="uk-width-1-1">
-                        <a uk-toggle="target: #incomes-modal" uk-icon="icon: plus-circle">Adicionar </a>
-                    </div>
-                    <table *ngIf="investimentoForm.incomes.length > 0" class="uk-table uk-table-small uk-table-divider">
-                        <thead>
-                            <tr>
-                                <th>Data</th>
-                                <th>Valor pago</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let incomeRow of investimentoForm.incomes">
-                                <td>{{incomeRow.date | date:'dd/MM/yyyy'}}</td>
-                                <td>{{incomeRow.value_paid | currency: 'R$'}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="uk-width-1-1">
-                <div class="uk-margin">
-                    <button class="uk-button uk-button-primary" type="submit" [disabled]="form.invalid">
-                        Salvar
-                    </button>
-                </div>
-            </div>
-
-            <div id="transactions-modal" uk-modal>
-                <div class="uk-modal-dialog uk-margin-auto-vertical">
-                    <button class="uk-modal-close-default" type="button" uk-close></button>
-                    <div class="uk-modal-header">
-                        <h2 class="uk-modal-title">Adicionar Transação</h2>
-                    </div>
-                    <div class="uk-modal-body transaction-container">
-                        <div class="transaction-is-buying">
-                            <label class="uk-form-label" for="form-stacked-text">Comprando</label>
-                            <input name="transaction-is-buying" [(ngModel)]="transactionAdd.isBuying"
-                                class="uk-checkbox" type="checkbox" />
+                <div class="uk-width-1-1">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-stacked-text">Nome</label>
+                        <div class="uk-form-controls">
+                            <input name="name" [(ngModel)]="investimentoForm.name" required class="uk-input"
+                                type="text" />
                         </div>
-                        <div class="transaction-input">
-                            <label class="uk-form-label" for="form-stacked-text">Valor</label>
-                            <input name="value_paid" #code="ngModel" [(ngModel)]="transactionAdd.value_paid"
-                                class="uk-input" type="number" />
+                    </div>
+                </div>
+                <div class="uk-width-1-3@s">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-stacked-text">Código</label>
+                        <div class="uk-form-controls">
+                            <input name="code" [(ngModel)]="investimentoForm.code" required class="uk-input"
+                                type="text" />
                         </div>
-                        <div class="transaction-input">
-                            <label class="uk-form-label" for="form-stacked-text">Quantidade</label>
-                            <input name="quantity" [(ngModel)]="transactionAdd.quantity" class="uk-input"
+                    </div>
+                </div>
+                <div class="uk-width-1-3@s">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-stacked-text">Valor Atual</label>
+                        <div class="uk-form-controls">
+                            <input name="value" required [(ngModel)]="investimentoForm.value" class="uk-input"
                                 type="number" />
                         </div>
-                        <div class="transaction-input datepicker">
-                            <label class="uk-form-label" for="form-stacked-text">Data</label>
-                            <my-date-picker (dateChanged)="onDateChanged($event, true)" name="mydate"
-                                [options]="{dateFormat: 'dd.mm.yyyy'}">
-                            </my-date-picker>
-                        </div>
-                    </div>
-                    <div class="uk-modal-footer uk-text-right">
-                        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
-                        <button class="uk-button uk-button-primary" (click)="addTransaction()"
-                            type="button">Adicionar</button>
                     </div>
                 </div>
-            </div>
+                <div class="uk-width-1-3@s">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-stacked-text">Tipo</label>
+                        <div class="uk-form-controls">
+                            <select class="uk-select" name="type" [(ngModel)]="investimentoForm.type"
+                                (ngModelChange)="onChangeType($event)">
+                                <option value="" selected disabled hidden>Escolher...</option>
+                                <option value="0">Ação</option>
+                                <option value="1">FII</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-1">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-stacked-text">Transações</label>
+                        <div class="uk-width-1-1">
+                            <a uk-toggle="target: #transactions-modal" uk-icon="icon: plus-circle">Adicionar </a>
+                        </div>
+                        <table *ngIf="investimentoForm.transactions.length > 0"
+                            class="uk-table uk-table-small uk-table-divider">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Comprando</th>
+                                    <th>Valor pago</th>
+                                    <th>Quantidade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let transactionRow of investimentoForm.transactions">
+                                    <td>{{transactionRow.date | date:'dd/MM/yyyy'}}</td>
+                                    <td>{{transactionRow.isBuying ? '✓' : ''}}</td>
+                                    <td>{{transactionRow.value_paid | currency: 'R$'}}</td>
+                                    <td>{{transactionRow.quantity}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="uk-width-1-1">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-stacked-text">Rendimentos</label>
+                        <div class="uk-width-1-1">
+                            <a uk-toggle="target: #incomes-modal" uk-icon="icon: plus-circle">Adicionar </a>
+                        </div>
+                        <table *ngIf="investimentoForm.incomes.length > 0"
+                            class="uk-table uk-table-small uk-table-divider">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Valor pago</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let incomeRow of investimentoForm.incomes">
+                                    <td>{{incomeRow.date | date:'dd/MM/yyyy'}}</td>
+                                    <td>{{incomeRow.value_paid | currency: 'R$'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="uk-width-1-1">
+                    <div class="uk-margin">
+                        <button class="uk-button uk-button-primary" type="submit" [disabled]="form.invalid">
+                            Salvar
+                        </button>
+                    </div>
+                </div>
 
-            <div id="incomes-modal" uk-modal>
-                <div class="uk-modal-dialog uk-margin-auto-vertical">
-                    <button class="uk-modal-close-default" type="button" uk-close></button>
-                    <div class="uk-modal-header">
-                        <h2 class="uk-modal-title">Adicionar Rendimento</h2>
-                    </div>
-                    <div class="uk-modal-body transaction-container">
-                        <div class="transaction-input">
-                            <label class="uk-form-label" for="form-stacked-text">Valor</label>
-                            <input name="value_paid" #code="ngModel" [(ngModel)]="incomeAdd.value_paid" class="uk-input"
-                                type="number" />
+                <div id="transactions-modal" uk-modal>
+                    <div class="uk-modal-dialog uk-margin-auto-vertical">
+                        <button class="uk-modal-close-default" type="button" uk-close></button>
+                        <div class="uk-modal-header">
+                            <h2 class="uk-modal-title">Adicionar Transação</h2>
                         </div>
-                        <div class="transaction-input datepicker">
-                            <label class="uk-form-label" for="form-stacked-text">Data</label>
-                            <my-date-picker (dateChanged)="onDateChanged($event, false)" name="mydate"
-                                [options]="{dateFormat: 'dd.mm.yyyy'}">
-                            </my-date-picker>
+                        <div class="uk-modal-body transaction-container">
+                            <div class="transaction-is-buying">
+                                <label class="uk-form-label" for="form-stacked-text">Comprando</label>
+                                <input name="transaction-is-buying" [(ngModel)]="transactionAdd.isBuying"
+                                    class="uk-checkbox" type="checkbox" />
+                            </div>
+                            <div class="transaction-input">
+                                <label class="uk-form-label" for="form-stacked-text">Valor</label>
+                                <input name="value_paid" #code="ngModel" [(ngModel)]="transactionAdd.value_paid"
+                                    class="uk-input" type="number" />
+                            </div>
+                            <div class="transaction-input">
+                                <label class="uk-form-label" for="form-stacked-text">Quantidade</label>
+                                <input name="quantity" [(ngModel)]="transactionAdd.quantity" class="uk-input"
+                                    type="number" />
+                            </div>
+                            <div class="transaction-input datepicker">
+                                <label class="uk-form-label" for="form-stacked-text">Data</label>
+                                <my-date-picker (dateChanged)="onDateChanged($event, true)" name="mydate"
+                                    [options]="{dateFormat: 'dd.mm.yyyy'}">
+                                </my-date-picker>
+                            </div>
                         </div>
-                    </div>
-                    <div class="uk-modal-footer uk-text-right">
-                        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
-                        <button class="uk-button uk-button-primary" (click)="addIncome()"
-                            type="button">Adicionar</button>
+                        <div class="uk-modal-footer uk-text-right">
+                            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
+                            <button class="uk-button uk-button-primary" (click)="addTransaction()"
+                                type="button">Adicionar</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
+
+                <div id="incomes-modal" uk-modal>
+                    <div class="uk-modal-dialog uk-margin-auto-vertical">
+                        <button class="uk-modal-close-default" type="button" uk-close></button>
+                        <div class="uk-modal-header">
+                            <h2 class="uk-modal-title">Adicionar Rendimento</h2>
+                        </div>
+                        <div class="uk-modal-body transaction-container">
+                            <div class="transaction-input">
+                                <label class="uk-form-label" for="form-stacked-text">Valor</label>
+                                <input name="value_paid" #code="ngModel" [(ngModel)]="incomeAdd.value_paid"
+                                    class="uk-input" type="number" />
+                            </div>
+                            <div class="transaction-input datepicker">
+                                <label class="uk-form-label" for="form-stacked-text">Data</label>
+                                <my-date-picker (dateChanged)="onDateChanged($event, false)" name="mydate"
+                                    [options]="{dateFormat: 'dd.mm.yyyy'}">
+                                </my-date-picker>
+                            </div>
+                        </div>
+                        <div class="uk-modal-footer uk-text-right">
+                            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
+                            <button class="uk-button uk-button-primary" (click)="addIncome()"
+                                type="button">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

@@ -1,34 +1,40 @@
-<div class="investimentos-home-container">
-    <h3 class="uk-heading-divider">Investimentos FII</h3>
-    <div>
-        <a routerLink="add" class="uk-button uk-button-primary">
-            Adicionar FII
-        </a>
+<div class="uk-container">
+    <div class="investimentos-home-container">
+        <h3 class="uk-heading-divider">Investimentos FII</h3>
+        <div>
+            <a routerLink="add" class="uk-button uk-button-primary">
+                Adicionar FII
+            </a>
+        </div>
+        <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Valor</th>
+                    <th>Quantidade</th>
+                    <th>Detalhes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let investimentoFII of investimentosFII">
+                    <td>{{ investimentoFII.code }}</td>
+                    <td>{{ investimentoFII.name }}</td>
+                    <td>{{ getMaxValuePaid(investimentoFII) | currency: 'R$' }}</td>
+                    <td>{{ getQuantity(investimentoFII) }}</td>
+                    <td>
+                        <button class="uk-button uk-button-default">Ver</button>
+                        <button (click)="editInvestimento(investimentoFII)"
+                            class="uk-button uk-button-secondary button-delete">
+                            <span uk-icon="icon: pencil"></span>
+                        </button>
+                        <button (click)="removeInvestimento(investimentoFII)"
+                            class="uk-button uk-button-danger button-delete">
+                            <span uk-icon="icon: close"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
-        <thead>
-            <tr>
-                <th>Código</th>
-                <th>Nome</th>
-                <th>Valor</th>
-                <th>Quantidade</th>
-                <th>Detalhes</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let investimentoFII of investimentosFII">
-                <td>{{ investimentoFII.code }}</td>
-                <td>{{ investimentoFII.name }}</td>
-                <td>{{ getMaxValuePaid(investimentoFII) | currency: 'R$' }}</td>
-                <td>{{ getQuantity(investimentoFII) }}</td>
-                <td>
-                    <button class="uk-button uk-button-secondary">Ver</button>
-                    <button (click)="removeInvestimento(investimentoFII)"
-                        class="uk-button uk-button-danger button-delete">
-                        <span uk-icon="icon: close"></span>
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
 </div>

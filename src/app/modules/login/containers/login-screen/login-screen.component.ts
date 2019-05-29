@@ -17,7 +17,6 @@ export class LoginScreenComponent implements OnInit {
     }
 
     onSubmit() {
-        console.log(`Trying log in with email: ${this.email}`);
         this.loginService.signIn(this.email, this.password);
     }
 }

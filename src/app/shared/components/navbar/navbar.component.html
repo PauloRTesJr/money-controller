@@ -1,4 +1,4 @@
-<nav class="uk-navbar-container" uk-navbar>
+<nav *ngIf="shouldShow" class="uk-navbar-container" uk-navbar>
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav">
             <li class="uk-active"><a href="#">Investimentos</a></li>
@@ -12,7 +12,7 @@
             </button>
             <div uk-dropdown>
                 <ul class="uk-nav uk-dropdown-nav">
-                    <li class="uk-active"><a href="#">Trocar de usuários</a></li>
+                    <li (click)="logout()" class="uk-active"><a href="#">Trocar de usuários</a></li>
                 </ul>
             </div>
         </div>

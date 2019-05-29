@@ -11,14 +11,14 @@ import { InvestimentosService } from '../../services/investimentos/investimentos
     styleUrls: ['./investimentos-add.component.scss']
 })
 export class InvestimentosAddComponent implements OnInit {
-    @Input()
+
     investimentoForm: Investimento;
 
     transactionAdd: Transaction;
 
     incomeAdd: Income;
 
-    constructor(private investimentosService: InvestimentosService, private router: Router) { }
+    constructor (private investimentosService: InvestimentosService, private router: Router) { }
 
     ngOnInit() {
         this.investimentoForm = <Investimento>{ transactions: [], incomes: [] };
