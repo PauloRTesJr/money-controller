@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import UIkit from 'uikit';
 import { Investimento } from 'src/app/shared/models/investimento.model';
@@ -10,16 +10,21 @@ import { InvestimentoType } from 'src/app/shared/models/investimento-type.model'
     templateUrl: './investimentos-home.component.html',
     styleUrls: ['./investimentos-home.component.scss']
 })
-export class InvestimentosHomeComponent implements OnInit {
+export class InvestimentosHomeComponent implements OnInit, OnDestroy {
     investimentosFII: Investimento[];
-    constructor(private investimentosService: InvestimentosService, private router: Router) { }
+    investimentosSubscribe: any;
+    constructor (private investimentosService: InvestimentosService, private router: Router) { }
 
     ngOnInit() {
-        this.investimentosService.getInvestimentos().subscribe(data => {
+        this.investimentosSubscribe = this.investimentosService.getInvestimentos().subscribe(data => {
             this.investimentosFII = data.filter(
                 inv => inv.type === InvestimentoType.FII
             );
         });
+    }
+
+    ngOnDestroy() {
+        this.investimentosSubscribe.unsubscribe();
     }
 
     getMaxValuePaid(investimento: Investimento) {

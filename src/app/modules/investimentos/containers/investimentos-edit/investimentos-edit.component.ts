@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Investimento, Transaction, Income } from 'src/app/shared/models/investimento.model';
 import { IMyDateModel } from 'mydatepicker';
@@ -18,14 +18,18 @@ export class InvestimentosEditComponent implements OnInit {
 
     incomeAdd: Income;
 
-    constructor(private investimentosService: InvestimentosService, private router: Router, private route: ActivatedRoute) {
-        this.route.params.subscribe(params => {
-            console.log(params['id']) //log the value of id
-        });
+    constructor (private investimentosService: InvestimentosService, private router: Router, private route: ActivatedRoute) {
+        this.investimentosService.getInvestimentoById(this.route.snapshot.paramMap.get("id"))
+            .subscribe((doc) => {
+                if (doc.exists) {
+                    this.investimentoForm = <Investimento>doc.data();
+                } else {
+                    console.log("No such document!");
+                }
+            });
     }
 
     ngOnInit() {
-
         this.investimentoForm = <Investimento>{ transactions: [], incomes: [] };
         this.transactionAdd = <Transaction>{};
         this.incomeAdd = <Income>{};

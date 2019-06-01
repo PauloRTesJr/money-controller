@@ -9,7 +9,7 @@ import { Investimento } from 'src/app/shared/models/investimento.model';
 export class InvestimentosService {
     private investimentosCollection: AngularFirestoreCollection<Investimento>;
     private investimentos: Observable<Investimento[]>;
-    constructor(private db: AngularFirestore) {
+    constructor (private db: AngularFirestore) {
         // Save collection from database to reuse as variable
         this.investimentosCollection = this.db
             .collection('/investimentos');
@@ -26,7 +26,11 @@ export class InvestimentosService {
         return this.investimentosCollection.doc(id).set(investimentoToAdd);
     }
 
-    removeInvestimento(investimento: Investimento) {
+    removeInvestimento(investimento: Investimento): Promise<void> {
         return this.investimentosCollection.doc(investimento.id).delete();
+    }
+
+    getInvestimentoById(id: string) {
+        return this.investimentosCollection.doc(id).get();
     }
 }
