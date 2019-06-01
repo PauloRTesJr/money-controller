@@ -30,6 +30,10 @@ export class InvestimentosService {
         return this.investimentosCollection.doc(investimento.id).delete();
     }
 
+    editInvestimento(investimento: Investimento): Promise<void> {
+        return this.investimentosCollection.doc(investimento.id).update(investimento);
+    }
+
     getInvestimentoById(id: string) {
         return this.investimentosCollection.doc(id).get();
     }

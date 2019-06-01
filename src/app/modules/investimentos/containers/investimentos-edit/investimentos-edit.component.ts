@@ -24,7 +24,7 @@ export class InvestimentosEditComponent implements OnInit {
                 if (doc.exists) {
                     this.investimentoForm = <Investimento>doc.data();
                 } else {
-                    console.log("No such document!");
+                    UIkit.notification('Não consegui achar esse investimento. Sorry. :(', 'danger')
                 }
             });
     }
@@ -74,11 +74,11 @@ export class InvestimentosEditComponent implements OnInit {
     }
 
     onSubmit() {
-        this.investimentosService.addInvestimento(this.investimentoForm)
+        this.investimentosService.editInvestimento(this.investimentoForm)
             .then(() => this.router.navigate(['/investimentos']))
             .catch((error) => {
                 console.log(error);
-                UIkit.notification('Alguma coisa de errado não está certo', 'danger')
+                UIkit.notification('Alguma coisa de errado não está certo', 'danger');
             });
     }
 }
