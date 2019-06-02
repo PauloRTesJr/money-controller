@@ -1,11 +1,11 @@
 <div class="uk-container">
     <div class="investimentos-home-container">
-        <h3 class="uk-heading-divider">Investimentos FII</h3>
         <div>
             <a routerLink="add" class="uk-button uk-button-primary">
-                Adicionar FII
+                Adicionar Investimento
             </a>
         </div>
+        <h3 class="uk-heading-divider">Investimentos FII</h3>
         <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
             <thead>
                 <tr>
@@ -29,6 +29,37 @@
                             <span uk-icon="icon: pencil"></span>
                         </button>
                         <button (click)="removeInvestimento(investimentoFII)"
+                            class="uk-button uk-button-danger button-delete">
+                            <span uk-icon="icon: close"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="uk-heading-divider">Investimentos Ações</h3>
+        <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Valor</th>
+                    <th>Quantidade</th>
+                    <th>Detalhes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let investimentoAcoes of investimentosAcoes">
+                    <td>{{ investimentoAcoes.code }}</td>
+                    <td>{{ investimentoAcoes.name }}</td>
+                    <td>{{ getMaxValuePaid(investimentoAcoes) | currency: 'R$' }}</td>
+                    <td>{{ getQuantity(investimentoAcoes) }}</td>
+                    <td>
+                        <button class="uk-button uk-button-default">Ver</button>
+                        <button (click)="editInvestimento(investimentoAcoes)"
+                            class="uk-button uk-button-secondary button-delete">
+                            <span uk-icon="icon: pencil"></span>
+                        </button>
+                        <button (click)="removeInvestimento(investimentoAcoes)"
                             class="uk-button uk-button-danger button-delete">
                             <span uk-icon="icon: close"></span>
                         </button>

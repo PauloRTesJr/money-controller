@@ -66,7 +66,7 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let transactionRow of investimentoForm.transactions">
-                                    <td>{{transactionRow.date | date:'dd/MM/yyyy'}}</td>
+                                    <td>{{transactionRow.date.toDate() | date:'dd/MM/yyyy'}}</td>
                                     <td>{{transactionRow.isBuying ? '✓' : ''}}</td>
                                     <td>{{transactionRow.value_paid | currency: 'R$'}}</td>
                                     <td>{{transactionRow.quantity}}</td>
@@ -91,7 +91,7 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let incomeRow of investimentoForm.incomes">
-                                    <td>{{incomeRow.date | date:'dd/MM/yyyy'}}</td>
+                                    <td>{{incomeRow.date.toDate() | date:'dd/MM/yyyy'}}</td>
                                     <td>{{incomeRow.value_paid | currency: 'R$'}}</td>
                                 </tr>
                             </tbody>

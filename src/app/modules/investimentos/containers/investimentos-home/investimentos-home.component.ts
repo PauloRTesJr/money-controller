@@ -12,13 +12,17 @@ import { InvestimentoType } from 'src/app/shared/models/investimento-type.model'
 })
 export class InvestimentosHomeComponent implements OnInit, OnDestroy {
     investimentosFII: Investimento[];
+    investimentosAcoes: Investimento[];
     investimentosSubscribe: any;
-    constructor (private investimentosService: InvestimentosService, private router: Router) { }
+    constructor(private investimentosService: InvestimentosService, private router: Router) { }
 
     ngOnInit() {
         this.investimentosSubscribe = this.investimentosService.getInvestimentos().subscribe(data => {
             this.investimentosFII = data.filter(
                 inv => inv.type === InvestimentoType.FII
+            );
+            this.investimentosAcoes = data.filter(
+                inv => inv.type === InvestimentoType.Acoes
             );
         });
     }

@@ -7,7 +7,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class LoginService {
 
-    constructor (private _firebaseAuth: AngularFireAuth, private router: Router) {
+    constructor(private _firebaseAuth: AngularFireAuth, private router: Router) {
         this._firebaseAuth.authState.subscribe(
             (user) => {
                 if (user) {

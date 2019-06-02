@@ -10,6 +10,12 @@ const routes: Routes = [
             "./modules/investimentos/investimentos.module#InvestimentosModule"
     },
     {
+        path: "bills",
+        canActivateChild: [AuthGuard],
+        loadChildren:
+            "./modules/bills/bills.module#BillsModule"
+    },
+    {
         path: "login",
         loadChildren:
             "./modules/login/login.module#LoginModule"

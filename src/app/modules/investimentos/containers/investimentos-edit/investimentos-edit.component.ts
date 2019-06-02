@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Investimento, Transaction, Income } from 'src/app/shared/models/investimento.model';
 import { IMyDateModel } from 'mydatepicker';
@@ -10,16 +10,17 @@ import { InvestimentosService } from '../../services/investimentos/investimentos
     templateUrl: './investimentos-edit.component.html',
     styleUrls: ['./investimentos-edit.component.scss']
 })
-export class InvestimentosEditComponent implements OnInit {
+export class InvestimentosEditComponent implements OnInit, OnDestroy {
 
     investimentoForm: Investimento;
-
     transactionAdd: Transaction;
-
     incomeAdd: Income;
+    getDocument: any;
 
-    constructor (private investimentosService: InvestimentosService, private router: Router, private route: ActivatedRoute) {
-        this.investimentosService.getInvestimentoById(this.route.snapshot.paramMap.get("id"))
+    constructor(private investimentosService: InvestimentosService, private router: Router, private route: ActivatedRoute) { }
+
+    ngOnInit() {
+        this.getDocument = this.investimentosService.getInvestimentoById(this.route.snapshot.paramMap.get("id"))
             .subscribe((doc) => {
                 if (doc.exists) {
                     this.investimentoForm = <Investimento>doc.data();
@@ -27,12 +28,13 @@ export class InvestimentosEditComponent implements OnInit {
                     UIkit.notification('Não consegui achar esse investimento. Sorry. :(', 'danger')
                 }
             });
-    }
-
-    ngOnInit() {
         this.investimentoForm = <Investimento>{ transactions: [], incomes: [] };
         this.transactionAdd = <Transaction>{};
         this.incomeAdd = <Income>{};
+    }
+
+    ngOnDestroy() {
+        this.getDocument.unsubscribe();
     }
 
     onDateChanged(event: IMyDateModel, isTransaction: boolean) {
