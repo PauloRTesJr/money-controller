@@ -1,3 +1,16 @@
 .uk-navbar {
   padding: 0 2vw;
+  background: #663384;
+
+  .uk-navbar-nav > li > a {
+    color: #CCC;
+    &:hover {
+      color: #DDD;
+      text-decoration: underline;
+    }
+  }
+
+  .uk-navbar-nav > li.uk-active > a {
+    color: #FFF;
+  }
 }
