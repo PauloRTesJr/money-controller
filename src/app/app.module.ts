@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { InvestimentosModule } from './modules/investimentos/investimentos.module';
 
 @NgModule({
     declarations: [AppComponent, NavbarComponent],
@@ -18,7 +19,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
         AppRoutingModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
-        AngularFireAuthModule
+        AngularFireAuthModule,
+        InvestimentosModule
     ],
     providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
     bootstrap: [AppComponent]

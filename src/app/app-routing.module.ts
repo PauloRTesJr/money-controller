@@ -4,12 +4,6 @@ import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
     {
-        path: "investimentos",
-        canActivateChild: [AuthGuard],
-        loadChildren:
-            "./modules/investimentos/investimentos.module#InvestimentosModule"
-    },
-    {
         path: "bills",
         canActivateChild: [AuthGuard],
         loadChildren:

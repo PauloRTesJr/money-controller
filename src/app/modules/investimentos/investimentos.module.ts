@@ -6,9 +6,10 @@ import { InvestimentosHomeComponent } from './containers/investimentos-home/inve
 import { InvestimentosRoutingModule } from './investimentos-routing.module';
 import { InvestimentosAddComponent } from './containers/investimentos-add/investimentos-add.component';
 import { InvestimentosEditComponent } from './containers/investimentos-edit/investimentos-edit.component';
+import { InvestimentosComponent } from './investimentos.component';
 
 @NgModule({
-    declarations: [InvestimentosHomeComponent, InvestimentosAddComponent, InvestimentosEditComponent],
+    declarations: [InvestimentosHomeComponent, InvestimentosAddComponent, InvestimentosEditComponent, InvestimentosComponent],
     imports: [CommonModule, InvestimentosRoutingModule, FormsModule, MyDatePickerModule]
 })
 export class InvestimentosModule { }
