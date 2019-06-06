@@ -51,3 +51,4 @@ src/environments/environment.ts
 .firebase/hosting.ZGlzdFxwZXJzb25hbC1zdHVmZg.cache
 /src/environments/environment.prod.ts
 /src/environments/environment.ts
+*.cache
