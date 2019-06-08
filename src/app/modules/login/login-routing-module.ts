@@ -1,11 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginScreenComponent } from './containers/login-screen/login-screen.component';
+import { LoginComponent } from './login.component';
 
 const routes: Routes = [
     {
-        path: '',
-        component: LoginScreenComponent
+        path: 'login',
+        component: LoginComponent,
+        children: [
+            {
+                path: '',
+                component: LoginScreenComponent
+            }
+        ]
     }
 ];
 

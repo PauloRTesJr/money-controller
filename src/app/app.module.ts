@@ -11,6 +11,8 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { InvestimentosModule } from './modules/investimentos/investimentos.module';
+import { LoginModule } from './modules/login/login.module';
+import { BillsModule } from './modules/bills/bills.module';
 
 @NgModule({
     declarations: [AppComponent, NavbarComponent],
@@ -20,7 +22,9 @@ import { InvestimentosModule } from './modules/investimentos/investimentos.modul
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
         AngularFireAuthModule,
-        InvestimentosModule
+        InvestimentosModule,
+        LoginModule,
+        BillsModule
     ],
     providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
     bootstrap: [AppComponent]

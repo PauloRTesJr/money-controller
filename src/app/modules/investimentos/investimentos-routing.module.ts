@@ -4,11 +4,13 @@ import { InvestimentosHomeComponent } from './containers/investimentos-home/inve
 import { InvestimentosAddComponent } from './containers/investimentos-add/investimentos-add.component';
 import { InvestimentosEditComponent } from './containers/investimentos-edit/investimentos-edit.component';
 import { InvestimentosComponent } from './investimentos.component';
+import { AuthGuard } from 'src/app/shared/guards/auth.guard';
 
 const routes: Routes = [
     {
         path: 'investimentos',
         component: InvestimentosComponent,
+        canActivate: [AuthGuard],
         children: [
             {
                 path: '',

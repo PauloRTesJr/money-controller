@@ -1,19 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
-    {
-        path: "bills",
-        canActivateChild: [AuthGuard],
-        loadChildren:
-            "./modules/bills/bills.module#BillsModule"
-    },
-    {
-        path: "login",
-        loadChildren:
-            "./modules/login/login.module#LoginModule"
-    },
     {
         path: "",
         redirectTo: "investimentos",
