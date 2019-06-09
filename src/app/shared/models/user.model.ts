@@ -1,5 +1,3 @@
-import { InvestimentoType } from './investimento-type.model';
-
 export interface User {
     id: string;
     name: string;

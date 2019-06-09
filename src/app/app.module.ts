@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
@@ -13,9 +14,10 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { InvestimentosModule } from './modules/investimentos/investimentos.module';
 import { LoginModule } from './modules/login/login.module';
 import { BillsModule } from './modules/bills/bills.module';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 @NgModule({
-    declarations: [AppComponent, NavbarComponent],
+    declarations: [AppComponent, NavbarComponent, PageNotFoundComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -26,7 +28,10 @@ import { BillsModule } from './modules/bills/bills.module';
         LoginModule,
         BillsModule
     ],
-    providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
+    providers: [
+        { provide: LocationStrategy, useClass: HashLocationStrategy },
+        { provide: FirestoreSettingsToken, useValue: {} }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

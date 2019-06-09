@@ -12,7 +12,6 @@ export class LoginService {
             (user) => {
                 if (user) {
                     localStorage.setItem('user', JSON.stringify(user));
-                    this.router.navigate(['/investimentos'])
                 }
                 else {
                     localStorage.setItem('user', null);
@@ -23,7 +22,7 @@ export class LoginService {
 
     signIn(email: string, password: string) {
         this._firebaseAuth.auth.signInWithEmailAndPassword(email, password)
-            .then((result) => console.log(result))
+            .then(() => this.router.navigate(['/investimentos']))
             .catch(error => console.log(error));
     }
 
