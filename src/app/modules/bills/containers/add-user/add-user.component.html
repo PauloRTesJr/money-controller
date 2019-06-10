@@ -1,3 +1,65 @@
-<p>
-  add-user works!
-</p>
+<div class="uk-container">
+    <div class="add-user-container">
+        <div>
+            <a routerLink="/bills" class="uk-button uk-button-secondary">Voltar</a>
+        </div>
+        <div class="form-container uk-flex uk-flex-center">
+            <form (ngSubmit)="onSubmit()" #form="ngForm" class="uk-grid-small" uk-grid>
+                <div class="uk-width-1-1">
+                    <h3>Adicionar Usuário</h3>
+                </div>
+                <div class="uk-width-1-2">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-stacked-text">Nome</label>
+                        <div class="uk-form-controls">
+                            <input name="name" [(ngModel)]="userForm.name" required class="uk-input" type="text" />
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-2">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-stacked-text">Email</label>
+                        <div class="uk-form-controls">
+                            <input name="email" [(ngModel)]="userForm.email" required class="uk-input" type="email" />
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-2">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-stacked-text">CPF</label>
+                        <div class="uk-form-controls">
+                            <input name="cpf" [(ngModel)]="userForm.CPF" required class="uk-input" type="text" />
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-1">
+                    <h4>Dados bancários</h4>
+                </div>
+                <div class="uk-width-1-2">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-stacked-text">Agencia</label>
+                        <div class="uk-form-controls">
+                            <input name="agencia" [(ngModel)]="userForm.agencia" class="uk-input" type="text" />
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-2">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-stacked-text">Conta</label>
+                        <div class="uk-form-controls">
+                            <input name="conta" [(ngModel)]="userForm.conta" class="uk-input" type="text" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="uk-width-1-1">
+                    <div class="uk-margin">
+                        <button class="uk-button uk-button-primary" type="submit" [disabled]="form.invalid">
+                            Salvar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
