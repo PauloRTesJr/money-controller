@@ -28,7 +28,8 @@
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-stacked-text">CPF</label>
                         <div class="uk-form-controls">
-                            <input name="cpf" [(ngModel)]="userForm.CPF" required class="uk-input" type="text" />
+                            <input id="user-cpf" name="cpf" [(ngModel)]="userForm.CPF" required class="uk-input"
+                                type="text" appMask [maskType]="cpf" />
                         </div>
                     </div>
                 </div>

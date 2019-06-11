@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
+import VMasker from 'vanilla-masker';
+
 import { User } from 'src/app/shared/models/user.model';
 
 @Component({
@@ -6,7 +8,7 @@ import { User } from 'src/app/shared/models/user.model';
     templateUrl: './add-user.component.html',
     styleUrls: ['./add-user.component.scss']
 })
-export class AddUserComponent implements OnInit {
+export class AddUserComponent implements OnInit, AfterContentInit {
 
     userForm: User;
 
@@ -14,6 +16,10 @@ export class AddUserComponent implements OnInit {
 
     ngOnInit() {
         this.userForm = <User>{};
+    }
+
+    ngAfterContentInit() {
+
     }
 
 }

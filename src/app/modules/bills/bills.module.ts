@@ -5,9 +5,10 @@ import { BillsRoutingModule } from './bills-routing.module';
 import { AddUserComponent } from './containers/add-user/add-user.component';
 import { BillsComponent } from './bills.component';
 import { FormsModule } from '@angular/forms';
+import { MaskDirective } from 'src/app/shared/directives/mask.directive';
 
 @NgModule({
-    declarations: [BillsComponent, BillsHomeComponent, AddUserComponent],
+    declarations: [BillsComponent, BillsHomeComponent, AddUserComponent, MaskDirective],
     imports: [
         CommonModule,
         BillsRoutingModule,
