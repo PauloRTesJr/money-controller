@@ -14,4 +14,22 @@ export class UserService {
         this.usersCollection = this.db.collection('/users');
         this.users = this.usersCollection.valueChanges();
     }
+
+    getUsers(): Observable<User[]> {
+        return this.users;
+    }
+
+    addUser(user: User): Promise<void> {
+        const id = this.db.createId();
+        const userToAdd: User = { id, ...user };
+        return this.usersCollection.doc(id).set(userToAdd);
+    }
+
+    removeUser(user: User): Promise<void> {
+        return this.usersCollection.doc(user.id).delete();
+    }
+
+    editUser(user: User): Promise<void> {
+        return this.usersCollection.doc(user.id).update(user);
+    }
 }

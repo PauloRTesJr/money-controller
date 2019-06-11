@@ -8,7 +8,7 @@
                 <div class="uk-width-1-1">
                     <h3>Adicionar Usuário</h3>
                 </div>
-                <div class="uk-width-1-2">
+                <div class="uk-width-1-2@s">
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-stacked-text">Nome</label>
                         <div class="uk-form-controls">
@@ -16,7 +16,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="uk-width-1-2">
+                <div class="uk-width-1-2@s">
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-stacked-text">Email</label>
                         <div class="uk-form-controls">
@@ -24,12 +24,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="uk-width-1-2">
+                <div class="uk-width-1-2@s">
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-stacked-text">CPF</label>
                         <div class="uk-form-controls">
-                            <input id="user-cpf" name="cpf" [(ngModel)]="userForm.CPF" required class="uk-input"
-                                type="text" appMask [maskType]="cpf" />
+                            <input name="cpf" [(ngModel)]="userForm.CPF" class="uk-input" type="text"
+                                [textMask]="{mask: maskCpf, guide: false, modelClean: true}" />
+                            {{userForm.CPF}}
                         </div>
                     </div>
                 </div>

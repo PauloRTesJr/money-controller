@@ -1,16 +1,21 @@
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import VMasker from 'vanilla-masker';
 
 @Directive({
     selector: '[appMask]'
 })
-export class MaskDirective {
+export class MaskDirective implements OnInit {
 
-    @Input('maskType') maskType: string;
+    @Input('appMask') option: string;
 
-    constructor (private el: ElementRef) {
-        console.log(this.maskType);
-        VMasker(el.nativeElement).maskPattern("999.999.999-99");
+    constructor(private el: ElementRef) { }
+
+    ngOnInit() {
+        switch (this.option) {
+            case 'cpf':
+                VMasker(this.el.nativeElement).maskPattern("999.999.999-99");
+                break;
+        }
     }
 
 }

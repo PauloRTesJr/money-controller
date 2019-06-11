@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TextMaskModule } from 'angular2-text-mask';
 import { BillsHomeComponent } from './containers/bills-home/bills-home.component';
 import { BillsRoutingModule } from './bills-routing.module';
 import { AddUserComponent } from './containers/add-user/add-user.component';
@@ -12,7 +13,8 @@ import { MaskDirective } from 'src/app/shared/directives/mask.directive';
     imports: [
         CommonModule,
         BillsRoutingModule,
-        FormsModule
+        FormsModule,
+        TextMaskModule
     ]
 })
 export class BillsModule { }
