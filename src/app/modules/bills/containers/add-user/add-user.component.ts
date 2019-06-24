@@ -15,18 +15,18 @@ export class AddUserComponent implements OnInit {
     userForm: User;
     public maskCpf = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
 
-    constructor(private userService: UserService, private router: Router) { }
+    constructor (private userService: UserService, private router: Router) { }
 
     ngOnInit() {
         this.userForm = <User>{};
     }
 
     onSubmit() {
-        // this.userService.addUser(this.userForm)
-        //     .then(() => this.router.navigate(['/bills']))
-        //     .catch((error) => {
-        //         console.log(error);
-        //         UIkit.notification('Alguma coisa de errado não está certo', 'danger')
-        //     });
+        this.userService.addUser(this.userForm)
+            .then(() => this.router.navigate(['/bills']))
+            .catch((error) => {
+                console.log(error);
+                UIkit.notification('Alguma coisa de errado não está certo', 'danger')
+            });
     }
 }
