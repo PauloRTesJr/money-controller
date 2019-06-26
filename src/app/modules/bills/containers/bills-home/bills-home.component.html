@@ -12,15 +12,15 @@
     <div class="uk-flex total-container">
         <div class="uk-card uk-card-default uk-card-body uk-width-1-4@m">
             <h3 class="uk-card-title">Total</h3>
-            <p>{{total}}</p>
+            <p>{{total()}}</p>
         </div>
         <div class="uk-card uk-card-primary uk-card-body uk-width-1-4@m">
             <h3 class="uk-card-title">Total Receitas</h3>
-            <p>{{totalReceitas}}</p>
+            <p>{{total(1)}}</p>
         </div>
         <div class="uk-card uk-card-secondary uk-card-body uk-width-1-4@m">
             <h3 class="uk-card-title">Total Despesas</h3>
-            <p>{{totalDespesas}}</p>
+            <p>{{total(0)}}</p>
         </div>
     </div>
     <div class="table-container">

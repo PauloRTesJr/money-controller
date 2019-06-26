@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BillsService } from '../../services/bills.service';
-import { Bill } from 'src/app/shared/models/bill.model';
+import { Bill, BillType } from 'src/app/shared/models/bill.model';
 
 @Component({
     selector: 'app-bills-home',
@@ -16,15 +16,20 @@ export class BillsHomeComponent implements OnInit {
         this.billsService.getBills().subscribe((bills) => this.bills = bills);
     }
 
-    get totalDespesas(): number {
-        return 0;
-    }
-
-    get totalReceitas(): number {
-        return 0;
-    }
-
-    get total(): number {
+    total(type: BillType = null): number {
+        let total = 0;
+        if (this.bills) {
+            this.bills.forEach((bill) => {
+                if (type != null) {
+                    if (bill.type == type) {
+                        total += bill.value;
+                    }
+                } else {
+                    total += bill.value;
+                }
+            })
+            return total;
+        }
         return 0;
     }
 }

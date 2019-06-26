@@ -11,12 +11,7 @@
     }
 
     .table-container {
-        width: 80%;
         margin-top: 30px;
-
-        @media screen and (max-width: 400px) {
-            width: 100%;
-        }
 
         .table-description {
             overflow: hidden!important;
