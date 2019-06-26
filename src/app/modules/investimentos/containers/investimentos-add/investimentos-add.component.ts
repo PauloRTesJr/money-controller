@@ -60,7 +60,7 @@ export class InvestimentosAddComponent implements OnInit {
             this.incomeAdd = Object.create(<Transaction>{});
             UIkit.modal("#incomes-modal").hide();
         } else {
-            UIkit.notification('Tempo campo faltando, mano! Preenche tudo aí, carai!', 'danger');
+            UIkit.notification('Tempo campo faltando, mano! Preenche tudo aí, 😡!', 'danger');
         }
     }
 

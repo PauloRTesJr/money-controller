@@ -9,6 +9,20 @@
             </a>
         </div>
     </div>
-
-
+    <table class="uk-table uk-table-small uk-table-divider uk-table-responsive">
+        <thead>
+            <tr>
+                <th>Valor</th>
+                <th>Data</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let bill of bills" [ngClass]="{'despesa': bill.type==0, 'receita': bill.type==1}">
+                <td>{{bill.value | currency: 'R$'}}</td>
+                <td>{{bill.date.toDate() | date:'dd/MM/yyyy'}}</td>
+                <td>{{bill.description}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

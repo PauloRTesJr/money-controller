@@ -1,37 +1,60 @@
 <div>
     <div>
-        <a href="#modal-sections" uk-toggle class="uk-button uk-button-secondary">
+        <a href="#modal-bill" uk-toggle class="uk-button uk-button-secondary">
             Adicionar Transação
         </a>
     </div>
-    <div id="modal-sections" uk-modal>
+    <div id="modal-bill" uk-modal>
         <div class="uk-modal-dialog">
             <button class="uk-modal-close-default" type="button" uk-close></button>
             <div class="uk-modal-header">
                 <h2 class="uk-modal-title">Novo gasto 😕 ou receita 😍</h2>
             </div>
             <div class="uk-modal-body">
-                <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                    <label><input name="type" class="uk-radio" type="radio">Gasto 👎</label>
-                    <label><input name="type" class="uk-radio" type="radio">Receita 👍</label>
-                </div>
-                <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                    <div class="bill-input">
-                        <label class="uk-form-label" for="form-stacked-text">Valor</label>
-                        <input name="value_paid" #code="ngModel" [(ngModel)]="bill.value" class="uk-input"
-                            type="number" />
+                <form (ngSubmit)="onSubmit()" #form="ngForm">
+                    <div class="uk-flex-center uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                        <label>
+                            <input name="type" class="uk-radio" type="radio" [(ngModel)]="bill.type" value="0">
+                            Gasto 👎
+                        </label>
+                        <label>
+                            <input name="type" class="uk-radio" type="radio" [(ngModel)]="bill.type" value="1">
+                            Receita 👍
+                        </label>
                     </div>
-                    <div class="bill-input">
-                        <label class="uk-form-label" for="form-stacked-text">Data</label>
-                        <my-date-picker (dateChanged)="onDateChanged($event, false)" name="mydate"
-                            [options]="{dateFormat: 'dd/mm/yyyy'}">
-                        </my-date-picker>
+                    <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                        <div class="bill-input">
+                            <label class="uk-form-label" for="value">Valor</label>
+                            <input name="value" #code="ngModel" [(ngModel)]="bill.value" class="uk-input"
+                                type="number" />
+                        </div>
+                        <div class="bill-input">
+                            <label class="uk-form-label" for="mydate">Data</label>
+                            <my-date-picker (dateChanged)="onDateChanged($event, false)" name="mydate"
+                                [options]="{dateFormat: 'dd/mm/yyyy'}">
+                            </my-date-picker>
+                        </div>
                     </div>
-                </div>
+                    <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                        <div class="bill-input">
+                            <label class="uk-form-label" for="value">Categoria</label>
+                            <input name="value" #code="ngModel" [(ngModel)]="bill.value" class="uk-input"
+                                type="number" />
+                        </div>
+                    </div>
+                    <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                        <div class="bill-input">
+                            <label class="uk-form-label" for="text-description">Descrição</label>
+                            <textarea name="description" class="uk-textarea" [(ngModel)]="bill.description"
+                                rows="5"></textarea>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="uk-modal-footer uk-text-right">
                 <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                <button class="uk-button uk-button-primary uk-margin-left" type="button">Save</button>
+                <button class="uk-button uk-button-primary uk-margin-left" (click)="onSubmit()"
+                    type="button">Save</button>
             </div>
         </div>
     </div>
