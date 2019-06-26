@@ -16,4 +16,15 @@ export class BillsHomeComponent implements OnInit {
         this.billsService.getBills().subscribe((bills) => this.bills = bills);
     }
 
+    get totalDespesas(): number {
+        return 0;
+    }
+
+    get totalReceitas(): number {
+        return 0;
+    }
+
+    get total(): number {
+        return 0;
+    }
 }

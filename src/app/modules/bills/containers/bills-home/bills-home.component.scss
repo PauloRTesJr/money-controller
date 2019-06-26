@@ -9,4 +9,30 @@
     .receita {
         background-color: #53fdde;
     }
+
+    .table-container {
+        width: 80%;
+        margin-top: 30px;
+
+        @media screen and (max-width: 400px) {
+            width: 100%;
+        }
+
+        .table-description {
+            overflow: hidden!important;
+        }
+    }
+
+    .total-container {
+        margin-top: 30px;
+        .uk-card {
+            margin-left: 20px;
+        }
+        @media screen and (max-width: 400px) {
+            flex-direction: column;
+            .uk-card {
+                margin-left: 0px;
+            }
+        }
+    }
 }
